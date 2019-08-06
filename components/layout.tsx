@@ -1,8 +1,13 @@
-import "milligram";
 import React from "react";
+import Header from "./header";
 
-const withLayout = <P extends object>(
-  Component: React.ComponentType<P>
-): React.FC<P> => ({ ...props }) => <Component {...(props as P)} />;
+// TODO: register domain name
+// TODO: integrate with CircleCI
+// TODO: automatic deployment
 
-export default withLayout;
+export default (Component: React.ComponentType) => ({ ...props }) => (
+  <>
+    <Header />
+    <Component {...props} />
+  </>
+);
