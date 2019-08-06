@@ -1,0 +1,8 @@
+.next/
+.firebase/
+node_modules/
+data/**/*.js
+api/**/*.js
+api/data/
+data/players.json
+out/
