@@ -1,4 +1,3 @@
-import "milligram";
 import withLayout from "../components/layout";
 import PlayerSummary from "../components/player-summary";
 import players from "../data/players.json";
