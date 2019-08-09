@@ -1,6 +1,6 @@
 import withLayout from "../components/layout";
-import PlayerSummaries from "../components/player-summaries";
+import CharacterSummaries from "../components/character-summaries";
 
-const Index = () => <PlayerSummaries />;
+const Index = () => <CharacterSummaries />;
 
 export default withLayout(Index);
