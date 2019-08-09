@@ -9,6 +9,7 @@ export default () => (
         <th>Level</th>
         <th>Deaths</th>
         <th>Achievements</th>
+        <th>Crafting levels</th>
         <th>Titles</th>
         <th>Coins</th>
         <th>Karma</th>
@@ -28,9 +29,21 @@ export default () => (
             )}{" "}
             points)
           </td>
+          <td data-label="Crafting level">
+            {player.crafting.length > 0 ? (
+              player.crafting.map((craft, i) => (
+                <span key={craft.discipline}>
+                  {craft.discipline} ({craft.rating})
+                  {i < player.crafting.length - 1 && ", "}
+                </span>
+              ))
+            ) : (
+              <>-</>
+            )}
+          </td>
           <td data-label="Titles">{player.titles.length}</td>
           <td data-label="Coins">{player.wallet.coins}</td>
-          <td data-label="Coins">{player.wallet.karma}</td>
+          <td data-label="Karma">{player.wallet.karma}</td>
         </tr>
       ))}
     </tbody>
