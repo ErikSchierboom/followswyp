@@ -11,7 +11,12 @@ export default (player: Player): JSX.Element => (
       <div className="row">{player.titles.length} titles</div>
       <div className="row">
         {player.achievements.filter(achievement => achievement.done).length}{" "}
-        achievements
+        achievements,{" "}
+        {player.achievements.reduce(
+          (points, achievement) => points + achievement.points,
+          0
+        )}{" "}
+        points
       </div>
       <div className="row">{player.wallet.coins} coins</div>
       <div className="row">{player.wallet.karma} karma</div>

@@ -32,6 +32,19 @@ const accountAchievementCategoryName = (
   return achievementCategory && achievementCategory.name;
 };
 
+const accountAchievementPoints = (
+  accountAchievement: ApiAccountAchievement
+): number => {
+  const achievement = gameAchievements[accountAchievement.id];
+  return (
+    (achievement &&
+      achievement.tiers
+        .filter(tier => tier.count <= accountAchievement.current)
+        .reduce((points, tier) => points + tier.points, 0)) ||
+    0
+  );
+};
+
 export const accountAchievements = (account: ApiAccount): Achievement[] => {
   const accountAchievements = readApiAccountData<ApiAccountAchievement[]>(
     "account-achievements",
@@ -43,6 +56,7 @@ export const accountAchievements = (account: ApiAccount): Achievement[] => {
     current: accountAchievement.current,
     max: accountAchievement.max,
     done: accountAchievement.done,
+    points: accountAchievementPoints(accountAchievement),
     category: accountAchievementCategoryName(accountAchievement)
   }));
 };

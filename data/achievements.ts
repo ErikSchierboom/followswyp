@@ -3,5 +3,6 @@ export interface Achievement {
   readonly current: number;
   readonly max: number;
   readonly done: boolean;
+  readonly points: number;
   readonly category?: string;
 }
