@@ -16,7 +16,7 @@ export default () => (
     </thead>
     <tbody>
       {players.map(player => (
-        <tr>
+        <tr key={player.character}>
           <td data-label="Name">{player.character}</td>
           <td data-label="Level">{player.level}</td>
           <td data-label="Deaths">{player.deaths}</td>
