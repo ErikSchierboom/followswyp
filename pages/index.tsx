@@ -1,11 +1,6 @@
 import withLayout from "../components/layout";
-import PlayerSummary from "../components/player-summary";
-import players from "../data/players.json";
+import PlayerSummaries from "../components/player-summaries";
 
-const Index = () => (
-  <div className="container">
-    <div className="row">{players.map(PlayerSummary)}</div>
-  </div>
-);
+const Index = () => <PlayerSummaries />;
 
 export default withLayout(Index);
