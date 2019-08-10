@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import "../utils";
+import "../array";
 
 type Parameters = Record<string, string>;
 

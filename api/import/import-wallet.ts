@@ -1,11 +1,11 @@
 import { ApiAccount } from "../api-accounts";
 import {
-  writeApiGameData,
-  writeApiAccountData
-} from "../files/api-file-writer";
+  updateApiGameData,
+  updateApiAccountData
+} from "../files/api-file-updater";
 
 export const importGameCurrencies = (): Promise<void> =>
-  writeApiGameData("currencies");
+  updateApiGameData("currencies");
 
 export const importAccountWallet = (account: ApiAccount): Promise<void> =>
-  writeApiAccountData("account/wallet", account);
+  updateApiAccountData("account/wallet", account);

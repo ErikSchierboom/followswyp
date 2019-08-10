@@ -3,6 +3,6 @@
 node_modules/
 data/**/*.js
 api/**/*.js
-api/files/data/
+api/data/
 data/players.json
 out/

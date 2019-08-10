@@ -14,5 +14,6 @@ const importAccount = async (account: ApiAccount): Promise<void> => {
 };
 
 export const importAccounts = async (): Promise<void> => {
+  console.log("import accounts");
   await Promise.all(accounts.map(importAccount));
 };

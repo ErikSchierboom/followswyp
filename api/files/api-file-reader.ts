@@ -1,8 +1,7 @@
-import fs from "fs";
-
 import { ApiAccount } from "../api-accounts";
 import { ApiElement } from "../types/api";
 import { accountDataFilePath, gameDataFilePath } from "./api-file-paths";
+import { readJsonFromFile } from "./file";
 
 const indexApiElementArrayById = <T extends ApiElement>(collection: T[]): T[] =>
   collection.reduce((mapped, element) => {
@@ -10,18 +9,14 @@ const indexApiElementArrayById = <T extends ApiElement>(collection: T[]): T[] =>
     return mapped;
   }, []);
 
-const readApiDataFromFile = <T>(filePath: string): T => {
-  return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
-};
-
 export const readApiAccountData = <T>(
   fileName: string,
   account: ApiAccount
-): T => readApiDataFromFile<T>(accountDataFilePath(fileName, account));
+): T => readJsonFromFile<T>(accountDataFilePath(fileName, account));
 
 export const readApiGameData = <T extends ApiElement>(
   fileName: string
 ): T[] => {
-  const data = readApiDataFromFile<T[]>(gameDataFilePath(fileName));
+  const data = readJsonFromFile<T[]>(gameDataFilePath(fileName));
   return indexApiElementArrayById(data);
 };

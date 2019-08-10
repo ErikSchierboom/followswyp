@@ -1,10 +1,11 @@
 import { ApiAccount } from "../api-accounts";
 import {
-  writeApiGameData,
-  writeApiAccountData
-} from "../files/api-file-writer";
+  updateApiGameData,
+  updateApiAccountData
+} from "../files/api-file-updater";
 
-export const importGameTitles = (): Promise<void> => writeApiGameData("titles");
+export const importGameTitles = (): Promise<void> =>
+  updateApiGameData("titles");
 
 export const importAccountTitles = (account: ApiAccount): Promise<void> =>
-  writeApiAccountData("account/titles", account);
+  updateApiAccountData("account/titles", account);

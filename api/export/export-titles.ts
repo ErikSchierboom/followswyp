@@ -1,8 +1,9 @@
 import { readApiGameData, readApiAccountData } from "../files/api-file-reader";
 import { ApiTitle, ApiAccountTitle } from "../types/titles";
 import { ApiAccount } from "../api-accounts";
+import { memoize } from "../memoize";
 
-const gameTitles = readApiGameData<ApiTitle>("titles");
+const gameTitles = memoize(() => readApiGameData<ApiTitle>("titles"));
 
 export const accountTitles = (account: ApiAccount): string[] => {
   const accountTitles = readApiAccountData<ApiAccountTitle[]>(
@@ -10,5 +11,5 @@ export const accountTitles = (account: ApiAccount): string[] => {
     account
   );
 
-  return accountTitles.map(id => gameTitles[id].name);
+  return accountTitles.map(id => gameTitles()[id].name);
 };

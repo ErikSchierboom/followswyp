@@ -6,23 +6,26 @@ import {
 } from "../types/achievements";
 import { ApiAccount } from "../api-accounts";
 import { Achievement } from "../../data/achievements";
+import { memoize } from "../memoize";
 
-const gameAchievements = readApiGameData<ApiAchievement>("achievements");
-const gameAchievementCategories = readApiGameData<ApiAchievementCategory>(
-  "achievements-categories"
+const gameAchievements = memoize(() =>
+  readApiGameData<ApiAchievement>("achievements")
+);
+const gameAchievementCategories = memoize(() =>
+  readApiGameData<ApiAchievementCategory>("achievements-categories")
 );
 
 const accountAchievementName = (
   accountAchievement: ApiAccountAchievement
 ): string => {
-  const achievement = gameAchievements[accountAchievement.id];
+  const achievement = gameAchievements()[accountAchievement.id];
   return (achievement && achievement.name) || "Unknown";
 };
 
 const accountAchievementCategoryName = (
   accountAchievement: ApiAccountAchievement
 ): string => {
-  const achievementCategory = gameAchievementCategories.find(
+  const achievementCategory = gameAchievementCategories().find(
     achievementCategory =>
       achievementCategory &&
       achievementCategory.achievements &&
@@ -35,7 +38,7 @@ const accountAchievementCategoryName = (
 const accountAchievementPoints = (
   accountAchievement: ApiAccountAchievement
 ): number => {
-  const achievement = gameAchievements[accountAchievement.id];
+  const achievement = gameAchievements()[accountAchievement.id];
   return (
     (achievement &&
       achievement.tiers

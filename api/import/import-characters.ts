@@ -1,5 +1,5 @@
 import { ApiAccount } from "../api-accounts";
-import { writeApiAccountData } from "../files/api-file-writer";
+import { updateApiAccountData } from "../files/api-file-updater";
 
 export const importAccountCharacter = (account: ApiAccount): Promise<void> =>
-  writeApiAccountData(`characters/${account.character}`, account);
+  updateApiAccountData(`characters/${account.character}`, account);

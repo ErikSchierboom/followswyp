@@ -1,15 +1,15 @@
 import { ApiAccount } from "../api-accounts";
 import {
-  writeApiGameData,
-  writeApiAccountData
-} from "../files/api-file-writer";
+  updateApiGameData,
+  updateApiAccountData
+} from "../files/api-file-updater";
 
 export const importGameAchievements = async (): Promise<void> => {
   await Promise.all([
-    writeApiGameData("achievements"),
-    writeApiGameData("achievements/categories")
+    updateApiGameData("achievements"),
+    updateApiGameData("achievements/categories")
   ]);
 };
 
 export const importAccountAchievements = (account: ApiAccount): Promise<void> =>
-  writeApiAccountData("account/achievements", account);
+  updateApiAccountData("account/achievements", account);

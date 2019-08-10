@@ -8,4 +8,8 @@ export class Options {
   public get updateAccountsData(): boolean {
     return this.args.includes("accounts");
   }
+
+  public get exportData(): boolean {
+    return this.args.includes("export");
+  }
 }

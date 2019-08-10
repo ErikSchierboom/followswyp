@@ -1,9 +1,9 @@
 import path from "path";
 import { ApiAccount } from "../api-accounts";
 
-const dataDirectory = path.join(__dirname, "data");
-const accountsDataDirectory = path.join(dataDirectory, "accounts");
-const gameDataDirectory = path.join(dataDirectory, "game");
+export const dataDirectory = path.join(__dirname, "..", "data");
+export const accountsDataDirectory = path.join(dataDirectory, "accounts");
+export const gameDataDirectory = path.join(dataDirectory, "game");
 
 const apiPathToFileName = (apiPath: string): string =>
   `${apiPath.replace("/", "-")}.json`;
