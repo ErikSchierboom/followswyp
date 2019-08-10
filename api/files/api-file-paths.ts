@@ -1,5 +1,5 @@
 import path from "path";
-import { ApiAccount } from "./api-accounts";
+import { ApiAccount } from "../api-accounts";
 
 const dataDirectory = path.join(__dirname, "data");
 const accountsDataDirectory = path.join(dataDirectory, "accounts");

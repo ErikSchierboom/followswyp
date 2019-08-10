@@ -2,7 +2,7 @@ import fs from "fs";
 
 import { ApiAccount } from "../api-accounts";
 import { ApiElement } from "../types/api";
-import { accountDataFilePath, gameDataFilePath } from "../api-file-paths";
+import { accountDataFilePath, gameDataFilePath } from "./api-file-paths";
 
 const indexApiElementArrayById = <T extends ApiElement>(collection: T[]): T[] =>
   collection.reduce((mapped, element) => {

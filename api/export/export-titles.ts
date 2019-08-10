@@ -1,4 +1,4 @@
-import { readApiGameData, readApiAccountData } from "./api-file-reader";
+import { readApiGameData, readApiAccountData } from "../files/api-file-reader";
 import { ApiTitle, ApiAccountTitle } from "../types/titles";
 import { ApiAccount } from "../api-accounts";
 

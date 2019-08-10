@@ -1,5 +1,8 @@
 import { ApiAccount } from "../api-accounts";
-import { writeApiGameData, writeApiAccountData } from "./api-file-writer";
+import {
+  writeApiGameData,
+  writeApiAccountData
+} from "../files/api-file-writer";
 
 export const importGameCurrencies = (): Promise<void> =>
   writeApiGameData("currencies");

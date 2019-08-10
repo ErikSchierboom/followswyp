@@ -2,8 +2,8 @@ import fs from "fs";
 
 import "../utils";
 import { ApiAccount } from "../api-accounts";
-import { accountDataFilePath, gameDataFilePath } from "../api-file-paths";
-import { download, downloadCollection } from "./api-client";
+import { accountDataFilePath, gameDataFilePath } from "./api-file-paths";
+import { download, downloadCollection } from "../import/api-client";
 
 export const downloadToFile = async <T>(
   filePath: string,

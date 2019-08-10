@@ -1,6 +1,6 @@
 import { accounts, ApiAccount } from "../api-accounts";
 import { Player } from "../../data/player";
-import { readApiAccountData } from "./api-file-reader";
+import { readApiAccountData } from "../files/api-file-reader";
 import { ApiCharacter } from "../types/character";
 import { accountTitles } from "./export-titles";
 import { accountAchievements } from "./export-achievements";
