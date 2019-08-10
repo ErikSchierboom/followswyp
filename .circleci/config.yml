@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.16.1
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - restore_cache:
+          key: api-data
+      - run: npm run update game accounts export
+      - run: npm run build
+      - run: npm run export
+      - save_cache:
+          paths:
+            - api/data
+          key: api-data
+
+      - run: npm run deploy
