@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./header";
 
-// TODO: register domain name
+// TODO: add unit tests
 // TODO: integrate with CircleCI
 // TODO: automatic deployment
 
