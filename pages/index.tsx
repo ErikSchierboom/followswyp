@@ -1,5 +1,5 @@
 import withLayout from "../components/layout";
-import CharacterSummaries from "../components/character-summaries";
+import CharacterSummaries from "../components/character-summaries/character-summaries";
 
 const Index = () => <CharacterSummaries />;
 
