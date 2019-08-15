@@ -1,4 +1,4 @@
-import { Achievement } from "./achievements";
+import { Achievements } from "./achievements";
 import { CraftingDiscipline } from "./crafting";
 import { Wallet } from "./wallet";
 
@@ -8,7 +8,7 @@ export interface Player {
   readonly level: number;
   readonly deaths: number;
   readonly titles: string[];
-  readonly achievements: Achievement[];
+  readonly achievements: Achievements;
   readonly wallet: Wallet;
   readonly crafting: CraftingDiscipline[];
 }

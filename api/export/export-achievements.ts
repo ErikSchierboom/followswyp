@@ -1,40 +1,16 @@
 import { readApiGameData, readApiAccountData } from "../files/api-file-reader";
-import {
-  ApiAchievement,
-  ApiAchievementCategory,
-  ApiAccountAchievement
-} from "../types/achievements";
+import { ApiAchievement, ApiAccountAchievement } from "../types/achievements";
 import { ApiAccount } from "../api-accounts";
-import { Achievement } from "../../data/achievements";
+import { Achievements } from "../../data/achievements";
 import { memoize } from "../memoize";
 
 const gameAchievements = memoize(() =>
   readApiGameData<ApiAchievement>("achievements")
 );
 
-const gameAchievementCategories = memoize(() =>
-  readApiGameData<ApiAchievementCategory>("achievements-categories")
-);
-
-const accountAchievementName = (
-  accountAchievement: ApiAccountAchievement
-): string => {
-  const achievement = gameAchievements()[accountAchievement.id];
-  return (achievement && achievement.name) || "Unknown";
-};
-
-const accountAchievementCategoryName = (
-  accountAchievement: ApiAccountAchievement
-): string => {
-  const achievementCategory = gameAchievementCategories().find(
-    achievementCategory =>
-      achievementCategory &&
-      achievementCategory.achievements &&
-      achievementCategory.achievements.includes(accountAchievement.id)
-  );
-
-  return achievementCategory && achievementCategory.name;
-};
+const accountAchievementsCompleted = (
+  accountAchievements: ApiAccountAchievement[]
+): number => accountAchievements.filter(achievement => achievement.done).length;
 
 const accountAchievementPoints = (
   accountAchievement: ApiAccountAchievement
@@ -49,18 +25,21 @@ const accountAchievementPoints = (
   );
 };
 
-export const accountAchievements = (account: ApiAccount): Achievement[] => {
+const accountAchievementsPoints = (
+  accountAchievements: ApiAccountAchievement[]
+): number =>
+  accountAchievements
+    .map(accountAchievementPoints)
+    .reduce((points, achievementPoints) => points + achievementPoints, 0);
+
+export const accountAchievements = (account: ApiAccount): Achievements => {
   const accountAchievements = readApiAccountData<ApiAccountAchievement[]>(
     "account-achievements",
     account
   );
 
-  return accountAchievements.map(accountAchievement => ({
-    name: accountAchievementName(accountAchievement),
-    current: accountAchievement.current,
-    max: accountAchievement.max,
-    done: accountAchievement.done,
-    points: accountAchievementPoints(accountAchievement),
-    category: accountAchievementCategoryName(accountAchievement)
-  }));
+  return {
+    completed: accountAchievementsCompleted(accountAchievements),
+    points: accountAchievementsPoints(accountAchievements)
+  };
 };

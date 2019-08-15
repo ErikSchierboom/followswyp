@@ -4,12 +4,8 @@ import {
   updateApiAccountData
 } from "../files/api-file-updater";
 
-export const importGameAchievements = async (): Promise<void> => {
-  await Promise.all([
-    updateApiGameData("achievements"),
-    updateApiGameData("achievements/categories")
-  ]);
-};
+export const importGameAchievements = (): Promise<void> =>
+  updateApiGameData("achievements");
 
 export const importAccountAchievements = (account: ApiAccount): Promise<void> =>
   updateApiAccountData("account/achievements", account);

@@ -1,8 +1,4 @@
-export interface Achievement {
-  readonly name: string;
-  readonly current: number;
-  readonly max: number;
-  readonly done: boolean;
+export interface Achievements {
+  readonly completed: number;
   readonly points: number;
-  readonly category?: string;
 }

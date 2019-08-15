@@ -16,14 +16,6 @@ export interface ApiAchievement extends ApiElement {
   readonly prerequisites: ApiElementId[];
 }
 
-export interface ApiAchievementCategory extends ApiElement {
-  readonly name: string;
-  readonly description: string;
-  readonly order: number;
-  readonly icon: string;
-  readonly achievements: ApiElementId[];
-}
-
 export interface ApiAccountAchievement extends ApiElement {
   readonly current: number;
   readonly max: number;
