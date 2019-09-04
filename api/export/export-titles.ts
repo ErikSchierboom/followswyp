@@ -11,5 +11,7 @@ export const accountTitles = (account: ApiAccount): string[] => {
     account
   );
 
-  return accountTitles.map(id => gameTitles()[id].name);
+  return accountTitles
+    .map(id => gameTitles()[id])
+    .map(accountTitle => (accountTitle ? accountTitle.name : "Unknown"));
 };
