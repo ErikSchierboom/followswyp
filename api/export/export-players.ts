@@ -20,6 +20,7 @@ const exportPlayer = (account: ApiAccount): Player => {
     character: account.character,
     deaths: character.deaths,
     level: character.level,
+    age: character.age,
     titles: accountTitles(account),
     achievements: accountAchievements(account),
     wallet: accountWallet(account),

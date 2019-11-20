@@ -5,6 +5,7 @@ import Crafting from "./character-summaries-crafting";
 import Titles from "./character-summaries-titles";
 import Coins from "./character-summaries-coins";
 import Karma from "./character-summaries-karma";
+import Deaths from "./character-summaries-deaths";
 
 export default () => (
   <table className="horizontal">
@@ -26,7 +27,7 @@ export default () => (
         <tr key={player.character}>
           <td data-label="Name">{player.character}</td>
           <td data-label="Level">{player.level}</td>
-          <td data-label="Deaths">{player.deaths}</td>
+          <td data-label="Deaths">{Deaths(player)}</td>
           <td data-label="Achievements">{Achievements(player)}</td>
           <td data-label="Crafting level">{Crafting(player)}</td>
           <td data-label="Titles">{Titles(player)}</td>

@@ -13,8 +13,13 @@ export const download = async <T>(
   path: string,
   parameters: Parameters = {}
 ): Promise<T> => {
-  const response = await axios.get<T>(apiUrl(path, parameters));
-  return response.data;
+  try {
+    const response = await axios.get<T>(`test${apiUrl(path, parameters)}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error downloading data from URL: ${path}`);
+    throw error;
+  }
 };
 
 const downloadPage = async <T>(

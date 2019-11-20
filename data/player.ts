@@ -7,6 +7,7 @@ export interface Player {
   readonly character: string;
   readonly level: number;
   readonly deaths: number;
+  readonly age: number;
   readonly titles: string[];
   readonly achievements: Achievements;
   readonly wallet: Wallet;
