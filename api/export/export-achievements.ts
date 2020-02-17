@@ -16,13 +16,19 @@ const accountAchievementPoints = (
   accountAchievement: ApiAccountAchievement
 ): number => {
   const achievement = gameAchievements()[accountAchievement.id];
-  return (
-    (achievement &&
-      achievement.tiers
-        .filter(tier => tier.count <= accountAchievement.current)
-        .reduce((points, tier) => points + tier.points, 0)) ||
-    0
-  );
+  if (!achievement) {
+    return 0;
+  }
+
+  const currentPoints = achievement.tiers
+    .filter(tier => tier.count <= accountAchievement.current)
+    .reduce((points, tier) => points + tier.points, 0);
+
+  const repeatedPoints =
+    achievement.tiers.reduce((points, tier) => points + tier.points, 0) *
+      accountAchievement.repeated || 0;
+
+  return currentPoints + repeatedPoints;
 };
 
 const accountAchievementsPoints = (

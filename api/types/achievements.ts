@@ -20,4 +20,5 @@ export interface ApiAccountAchievement extends ApiElement {
   readonly current: number;
   readonly max: number;
   readonly done: boolean;
+  readonly repeated?: number;
 }
